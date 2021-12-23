@@ -27,6 +27,7 @@ public class CardValidationTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -37,7 +38,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendEmptyForm() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -49,7 +49,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormEmptySurnameAndNameField() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79012345678");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -61,7 +60,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormEmptyPhoneNumber() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -73,7 +71,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWithLatinLetters() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivanov Ivan");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79012345678");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -85,7 +82,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWithSymbols() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("@#$^ )(*&^");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79012345678");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -97,7 +93,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWithArabicLigatures() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("الْأَبْجَدِيَّة الْعَرَبِيَّة");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79012345678");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -109,7 +104,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWith10DigitsPhoneNumber() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+7901234567");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -121,7 +115,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWith12DigitsPhoneNumber() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+790123456789");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -133,7 +126,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWithoutPlusInTheNumber() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("79012345678");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -145,7 +137,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWithSymbolsInsteadOfNumber() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+!@#$%^&*()(");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -157,7 +148,6 @@ public class CardValidationTest {
 
     @Test
     public void shouldSendFormWithLatinLettersInsteadOfNumber() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+qazwsxedcrf");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
